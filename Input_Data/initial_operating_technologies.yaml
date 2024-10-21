@@ -1,0 +1,58 @@
+dispatchableGenerators:
+ Nuclear_0:
+  maxPowerOutput: 1200 # MW
+  minStableOperatingPoint: 1000 # MW
+  effmin: 0.3 # efficiency at minimum stable operating point
+  effmax: 0.33 # efficiency at maximum power output
+  fuelcost: 3 # EUR/MWh of primary fuel input
+  carbonintensity: 0 # tCO2/MWh of primary fuel input
+  lifetime: 40 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+  
+ Coal_0:
+  maxPowerOutput: 800 # MW
+  minStableOperatingPoint: 500 # MW
+  effmin: 0.37 # efficiency at minimum stable operating point
+  effmax: 0.40 # efficiency at maximum power output
+  fuelcost: 10 # EUR/MWh of primary fuel input
+  carbonintensity: 0.34 # tCO2/MWh of primary fuel input
+  lifetime: 40 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+  
+ CCGT_0:
+  maxPowerOutput: 450 # MW
+  minStableOperatingPoint: 175 # MW
+  effmin: 0.43 # efficiency at minimum stable operating point
+  effmax: 0.55 # efficiency at maximum power output
+  fuelcost: 20 # EUR/MWh of primary fuel input
+  carbonintensity: 0.21 # tCO2/MWh of primary fuel input
+  lifetime: 25 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+  
+ OCGT_0:
+  maxPowerOutput: 50 # MW
+  minStableOperatingPoint: 15 # MW
+  effmin: 0.26 # efficiency at minimum stable operating point
+  effmax: 0.40 # efficiency at maximum power output
+  fuelcost: 20 # EUR/MWh of primary fuel input
+  carbonintensity: 0.21 # tCO2/MWh of primary fuel input
+  lifetime: 20 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+  
+variableGenerators:
+ Solar_0:
+  installedCapacity: 6000 # MW
+  lifetime: 20 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+
+ Wind_0:
+  installedCapacity: 6000 # MW
+  lifetime: 20 # years
+  decommissionStatus: false
+  decommissionYear: 2040
+
