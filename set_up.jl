@@ -1,6 +1,6 @@
 # LOADING OTHER FUNCTIONS, SCRIPTS, OR PACKAGES
 #-------------------------------------------------------------------------------
-include(joinpath(home_dir, "Definitions", "physical_structure.jl"))
+include(joinpath(home_dir, "Definitions", "collective_structure.jl"))
 include(joinpath(home_dir, "Procedures", "creation_technology!.jl"))
 include(joinpath(home_dir, "Procedures", "update_dic_operating_technologies!.jl"))
 

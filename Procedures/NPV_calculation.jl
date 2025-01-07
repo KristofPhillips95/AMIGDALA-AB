@@ -17,22 +17,11 @@ function NPV_calculation(investment_cost::Float64,
     
     """
 
-    npv = 0.0
-
-    for t in 1:(length(cash_flows) + 1)
-        
-        t = 2
-
-        if t == 1
-
-            npv = npv + investment_cost / (1 + discount_rate)^(t - 1)
-
-        else
-
-            npv = npv + cash_flows[t-1] / (1 + discount_rate)^(t - 1)
-
-        end        
-
+    #EAC = (investment_cost*discount_rate)/(1-(1+discount_rate)^lifetime)
+    npv = -investment_cost
+    for t in 1:(length(cash_flows))
+        #npv += (cash_flows[t] -EAC) / (1 + discount_rate)^(t)
+        npv += cash_flows[t] / (1 + discount_rate)^(t)
     end
 
     return npv

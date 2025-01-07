@@ -282,9 +282,7 @@ function investment_process!(vector_gencos::Vector{Agent},
     # Defensive programming: ensure gencos are willing to invest 
     gencos = vector_gencos 
     for genco in gencos
-
         genco.possibleRoles["investor"] = true
-
     end
 
     # Initialize external loop
@@ -293,8 +291,12 @@ function investment_process!(vector_gencos::Vector{Agent},
 
         # Shuffle the order of generation companies to avoid first mover advantage
         gencos = shuffle(gencos)
+
+        print("Number of gencos: ", length(gencos))
+
         # Iterate over the list of gencos
-        for genco in gencos           
+        for genco in gencos 
+            print("Next genco gets to decide on investments now")          
 
             # Retrieving genco's properties 
             sight = genco.decisionMakingCriteria["sight"]            
@@ -309,6 +311,7 @@ function investment_process!(vector_gencos::Vector{Agent},
             d = alternatives_technology 
             # iterate over the list of alternatives 
             for alternative in keys(d)
+                print("Genco calculates profits for alternative $d now")  
 
                 # Initalizing a dictionary containing the existing technologies and the new 
                 # set of technologies 

@@ -45,7 +45,16 @@ function go_once!(vector_gencos::Vector{Agent},
     (time_series, CO2_price) = data_wrangling(time_series_years,
     CO2_prices, # EUR / ton
     year)
-
+    print(
+        """
+            
+        Year is currently: $(year)
+            
+        """
+        )
+    if year == 2030
+        print("It will go wrong now")
+    end
     # Running economic dispatch model
     my_economic_dispatch = economic_dispatch(new_operating_technologies,
     time_series,
@@ -65,14 +74,14 @@ function go_once!(vector_gencos::Vector{Agent},
     if year % milestone_year == 0
 
         # Decommission of generators 
-        my_decommission = decommissioning(new_vector_gencos,
-        new_operating_technologies,
-        new_vector_technologies,
-        year)
+        # my_decommission = decommissioning(new_vector_gencos,
+        # new_operating_technologies,
+        # new_vector_technologies,
+        # year)
 
-        new_vector_gencos = my_decommission[1]
-        new_operating_technologies = my_decommission[2]
-        new_vector_technologies = my_decommission[3]
+        # new_vector_gencos = my_decommission[1]
+        # new_operating_technologies = my_decommission[2]
+        # new_vector_technologies = my_decommission[3]
 
         # Investment in new power plants 
         my_investment = investment_process!(new_vector_gencos,
@@ -103,7 +112,7 @@ function go_once!(vector_gencos::Vector{Agent},
 
     end
 
-    return (vector_gencos, vector_technologies, vector_ownerships, 
-    operating_technologies, dic_electricity_generation, λmat)
+    return (new_vector_gencos, new_vector_technologies, new_vector_ownerships, 
+    new_operating_technologies, dic_electricity_generation, λmat)
 
 end

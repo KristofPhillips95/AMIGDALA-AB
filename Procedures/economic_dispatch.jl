@@ -182,7 +182,7 @@ function build_basic_ED_model!(m::Model)
     con3a1 = m.ext[:constraints][:con3a1] = @constraint(m, [i=ID,jh=JH,jd=JD],
         g[i,jh,jd] <= GmaxD[i]
     )
-    # Generation < Installed capacity, renewable generators
+    # Generation < Installed capacity * Availability factor, renewable generators
     con3a2 = m.ext[:constraints][:con3a2] = @constraint(m, [i=IV,jh=JH,jd=JD],
         g[i,jh,jd] <= AF[i][jh,jd] * GmaxV[i]
     )
@@ -242,6 +242,21 @@ function economic_dispatch(data::Dict,
     
     """
     )
+    print(
+        """
+        
+        Load shedding max: $(maximum(JuMP.value.(m.ext[:variables][:ens])))
+        
+        """
+        )
+    print(
+        """
+            
+        ED objective in : $((JuMP.value.(m.ext[:objective])))
+            
+        """
+        )
+
     
     # Print relevant output
     # Sets

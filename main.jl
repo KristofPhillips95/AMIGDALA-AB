@@ -1,9 +1,9 @@
-# # Activate environment - ensure consistency accross computers
-# # using Pkg
+# Activate environment - ensure consistency accross computers
 # using Pkg
-# Pkg.activate(@__DIR__) # @__DIR__ = directory this script is in
-# Pkg.instantiate() # Download and install this environments packages
-# Pkg.precompile() # Precompiles all packages in environment
+using Pkg
+Pkg.activate(@__DIR__) # @__DIR__ = directory this script is in
+Pkg.instantiate() # Download and install this environments packages
+Pkg.precompile() # Precompiles all packages in environment
 
 
 # LOADING OTHER FUNCTIONS OR SCRIPTS
@@ -11,11 +11,12 @@
 using CSV
 using DataFrames
 using YAML
+using XLSX
 
 # Home directory
 const home_dir = @__DIR__
 
-# include(joinpath(home_dir,"Procedures","data_wrangling.jl"))
+#include(joinpath(home_dir,"Procedures","data_wrangling.jl"))
 include(joinpath(home_dir, "simulation.jl"))
 
 
@@ -69,6 +70,8 @@ milestone_year,
 repetitions,
 vector_seed)
 
+
+my_simulation[2020][1].technologies
 # PROCESSING DATA AND GENERATION OF FIGURES
 #-------------------------------------------------------------------------------
 println("Processing the results and generating figures")

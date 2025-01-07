@@ -24,18 +24,23 @@ function results_dataframe()
 end
 
 #-------------------------------------------------------------------------------
-function results_dic()
-
+function results_dict()
     """
-    
     """
-
-    dic = Dict{Int64, Dict{String, Any}}()
-
-
-    return dic
+    dict = Dict{Int64, Dict{String, Any}}()
 
 
+    return dict
+
+
+end
+
+function write_results_to_dict(results_dict,year,one_run_results)
+    print(year)
+    print(typeof(year))
+    print(results_dict)
+    results_dict[year] = one_run_results[1]
+    #results_dic[year]["gencos"] = one_run_results[1]
 end
 
 
@@ -63,7 +68,7 @@ function simulation(initial_operating_technologies::Dict,
 
     # Creation of the dataframe/dictionary to store simulation's outputs 
     dataframe_results = results_dataframe()
-    dic_results = results_dic()
+    dict_results = Dict()
 
     for i = 1:repetitions 
 
@@ -90,7 +95,6 @@ function simulation(initial_operating_technologies::Dict,
 
             Random.seed!(seed)
 
-            year = year + 1
 
             # Running the simulation in one step 
             one_run_results = go_once!(vector_gencos,
@@ -116,14 +120,14 @@ function simulation(initial_operating_technologies::Dict,
             dic_electricity_generation = one_run_results[5]
             λmat = one_run_results[6]
 
-            # Store data in dataframe or dictionary 
+            # Store data in dataframe or dictionary
+             write_results_to_dic(dict_results,year,one_run_results)
             # NOTE: TO BE DETERMINED 
-
+            year = year + 1
         end
-
     end
 
-    return (vector_gencos, vector_technologies, vector_ownerships, 
-    operating_technologies) # NOTE: ADD THE DATAFRAME OR DICTIONARY STORING RESULTS 
-
+    # return (vector_gencos, vector_technologies, vector_ownerships, 
+    # operating_technologies) # NOTE: ADD THE DATAFRAME OR DICTIONARY STORING RESULTS 
+    return dict_results
 end
